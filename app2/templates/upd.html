@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action='{% url "app2:update" pk= %}' method="post">
+        {% csrf_token %}
+        <input list="values" name="value">
+        <datalist id="values">
+            {% for i in res %}
+            <option value="{{i.name}}">{{i.name}}</option>
+            {% endfor %}
+
+        </datalist>
+        <input type="submit" value="update">
+    </form>
+</body>
+</html>

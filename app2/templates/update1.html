@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{temp}}
+    {% if temp %}
+
+    <form action="{% url 'app2:updaterecord' %}" method="post">
+        {% csrf_token %}
+        <label for="id">id</label>
+        <input type="text" id="user" name="id" placeholder="id" value="{{res.id}}" readonly >
+        <label for="user">user</label>
+        <input type="text" id="user" name="username" placeholder="username" value="{{res.name}}" >
+        <label for="email">email</label>
+        <input type="email" id="email" name="email" placeholder="email" value="{{res.email}}">
+        <label for="tel">tel</label>
+        <input type="tel" id="tel" name="tel" placeholder="tel" value="{{res.phone}}">
+        <input type="submit" value="update">
+
+    </form>
+    {% else %}
+    <form method="post">
+        {% csrf_token %}
+        <input list="values" name="value">
+        <datalist id="values">
+            {% for i in res %}
+            <option value="{{i.name}}">{{i.name}}</option>
+            {% endfor %}
+
+        </datalist>
+        <input type="submit" value="update">
+    </form>
+    {% endif %}
+</body>
+</html>

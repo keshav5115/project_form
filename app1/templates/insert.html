@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" id="id_sname" name="name" required><br>
+        <input type="email" id="id_marks" name="email" required><br>
+        <input type="phone" id="id_doj" name="phone" required><br>
+        <input type="text" id="id_loc" name="loc" required><br>
+        <input type="submit" value="insert">
+        </form>
+
+        <a href="{% url 'app1:register' %}"><button>select</button></a>
+</body>
+</html>
